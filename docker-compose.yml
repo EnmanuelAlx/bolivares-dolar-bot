@@ -1,0 +1,16 @@
+services:
+  telegram:
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile
+    container_name: telegram
+    restart: always
+    env_file: .env
+    ports:
+      - 5000:80
+    volumes:
+      - .:/bolivares-dolares-bot
+    command: ["python", "main.py"]
+
+volumes:
+  postgres_data:
